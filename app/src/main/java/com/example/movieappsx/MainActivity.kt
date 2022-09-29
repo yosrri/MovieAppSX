@@ -11,9 +11,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//        val adapter = MovieAdapter()
-//        binding.activityMainMoviesRv.adapter = adapter
-//        binding.activityMainMoviesRv.layoutManager = GridLayoutManager(applicationContext,2)
+        //didnt work cause i didnt do the get request 
+        val adapter = MovieAdapter()
+        binding.activityMainMoviesRv.adapter = adapter
+        binding.activityMainMoviesRv.layoutManager = GridLayoutManager(applicationContext,2)
 
 
     }
