@@ -5,25 +5,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="12dp"
-    tools:context=".UI.MovieDetails">
+    tools:context=".UI.MovieDetailsActivity"
+    android:padding="16dp">
 
-    <ImageView
-        android:id="@+id/movie_details_iv"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView_movie_poster"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:src="@mipmap/ic_launcher"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/movie_details_iv"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_gravity="center"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/movie_details_name_tv"
+        android:id="@+id/movie_details_title_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Movie name"
-        android:textSize="40sp"
+        android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/movie_details_iv" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView_movie_poster" />
+
+    <TextView
+        android:id="@+id/movie_details_overView_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Over View"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/movie_details_title_tv">
+    </TextView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
