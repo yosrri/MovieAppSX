@@ -39,8 +39,7 @@ class MainActivity : AppCompatActivity() {
 //            Toast.makeText(applicationContext, details.title, Toast.LENGTH_SHORT).show()
             this.movie = details
 //            details.title?.let { Log.d("title", it) }
-//            movie.title.let { Log.d("title", it) }
-            Log.d("Object",movie.title)
+            movie.title.let { Log.d("title", it) }
             intent.putExtra("movie", movie)
             startActivity(intent)
         })
