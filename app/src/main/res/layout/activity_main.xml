@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".UI.MainActivity">
 
    <androidx.recyclerview.widget.RecyclerView
@@ -14,7 +15,8 @@
        app:layout_constraintEnd_toEndOf="parent"
        app:layout_constraintStart_toStartOf="parent"
        app:layout_constraintTop_toTopOf="parent"
-       tools:listitem="@layout/movie_layout">
+       tools:listitem="@layout/movie_layout"
+       android:padding="12dp">
 
    </androidx.recyclerview.widget.RecyclerView>
 
