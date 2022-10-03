@@ -12,6 +12,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 const val APIKEY = "1b762faba77bb606900c43f155b37bbe"
+const val PAGENUMBER = 2
 
 class MovieViewModel : ViewModel() {
 
@@ -20,7 +21,7 @@ class MovieViewModel : ViewModel() {
 
     fun getTopRatedMovies() {
         APIClient.getClient().apply {
-            getTopRatedMovies(APIKEY, 2).enqueue(object : Callback<Movies> {
+            getTopRatedMovies(APIKEY, PAGENUMBER).enqueue(object : Callback<Movies> {
                 override fun onResponse(call: Call<Movies>?, response: Response<Movies>?) {
                     response?.body()?.let {
                         Log.d("TAG", response.code().toString() + "what is that")
