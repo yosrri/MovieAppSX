@@ -30,6 +30,7 @@ class MovieAdapter(private val onClickListener: OnClickListener) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val det = movieList[position]
         Glide.with(holder.binding.root)
             .load("https://image.tmdb.org/t/p/w500" + movieList[position].posterPath)
             .into(holder.binding.activityMainMoviesRvIv)

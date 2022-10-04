@@ -28,7 +28,6 @@ class MovieViewModel : ViewModel() {
                         movieLiveData.value = response.body().details
                     }
                 }
-
                 override fun onFailure(call: Call<Movies>?, t: Throwable?) {
                     t?.let { Log.d("TAG", t.message.toString()) }
                 }
