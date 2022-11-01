@@ -47,8 +47,7 @@ class MovieAdapter(private val onClickListener: OnClickListener) :
 
     private fun showMovieDetails(holder: ViewHolder, movie: Movie) =
         holder.itemView.setOnClickListener {
-            onClickListener.onClick(mo
-                    vie)
+            onClickListener.onClick(movie)
         }
 
     override fun getItemCount(): Int {

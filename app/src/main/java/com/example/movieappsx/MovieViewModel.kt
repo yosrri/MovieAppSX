@@ -1,5 +1,6 @@
 package com.example.movieappsx
 
+import android.annotation.SuppressLint
 import com.example.movieappsx.Data.Movie
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -15,6 +16,7 @@ class MovieViewModel : ViewModel() {
 
     private var movieLiveData = MutableLiveData<List<Movie>>()
 
+        @SuppressLint("SuspiciousIndentation")
         fun getTopRatedMovies(){
             viewModelScope.launch(Dispatchers.IO) {
             val response = APIClient.getRetrofit().getTopRatedMovies(APIKEY, PAGENUMBER)
