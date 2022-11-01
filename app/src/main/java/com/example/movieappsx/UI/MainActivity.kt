@@ -1,18 +1,16 @@
 package com.example.movieappsx.UI
 
 import android.content.Intent
-import com.example.movieappsx.Data.Details
+import com.example.movieappsx.Data.Movie
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.movieappsx.MovieAdapter
 import com.example.movieappsx.MovieViewModel
 import com.example.movieappsx.databinding.ActivityMainBinding
-import com.example.movieappsx.databinding.MovieLayoutBinding
 
 const val COLUMNS = 2
 
@@ -20,7 +18,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: MovieViewModel
     private lateinit var movieAdapter: MovieAdapter
-    private lateinit var movie: Details
+    private lateinit var movie: Movie
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -28,9 +26,9 @@ class MainActivity : AppCompatActivity() {
         prepareRecyclerView()
         viewModel = ViewModelProvider(this)[MovieViewModel::class.java]
         viewModel.getTopRatedMovies()
-        viewModel.observeMovieLiveData().observe(this, Observer { movieList ->
-            movieAdapter.setMovieList(movieList as ArrayList<Details>)
-        })
+        viewModel.observeMovieLiveData().observe(this) {
+            movieAdapter.setMovieList(it as ArrayList<Movie>)
+        }
     }
 
     private fun prepareRecyclerView() {
@@ -43,7 +41,6 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("movie", movie)
             startActivity(intent)
         })
-
 
         binding.activityMainMoviesRv.apply {
             layoutManager = GridLayoutManager(applicationContext, COLUMNS)

@@ -1,41 +1,28 @@
 package com.example.movieappsx
 
-import com.example.movieappsx.Data.Details
-import android.util.Log
+import com.example.movieappsx.Data.Movie
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.movieappsx.API.APIClient
-import com.example.movieappsx.Data.Movies
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.coroutines.*
 
 const val APIKEY = "1b762faba77bb606900c43f155b37bbe"
 const val PAGENUMBER = 2
 
 class MovieViewModel : ViewModel() {
 
-    private var movieLiveData = MutableLiveData<List<Details>>()
+    private var movieLiveData = MutableLiveData<List<Movie>>()
 
-
-    fun getTopRatedMovies() {
-        APIClient.getClient().apply {
-            getTopRatedMovies(APIKEY, PAGENUMBER).enqueue(object : Callback<Movies> {
-                override fun onResponse(call: Call<Movies>?, response: Response<Movies>?) {
-                    response?.body()?.let {
-                        Log.d("TAG", response.code().toString() + "what is that")
-                        movieLiveData.value = response.body().details
-                    }
-                }
-                override fun onFailure(call: Call<Movies>?, t: Throwable?) {
-                    t?.let { Log.d("TAG", t.message.toString()) }
-                }
-            })
+        fun getTopRatedMovies(){
+            viewModelScope.launch(Dispatchers.IO) {
+            val response = APIClient.getRetrofit().getTopRatedMovies(APIKEY, PAGENUMBER)
+                if(response.isSuccessful) movieLiveData.postValue(response.body()?.details)
+            }
         }
-    }
-
-    fun observeMovieLiveData(): LiveData<List<Details>> {
+    
+    fun observeMovieLiveData(): LiveData<List<Movie>> {
         return movieLiveData
     }
 }

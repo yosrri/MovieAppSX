@@ -3,13 +3,13 @@ import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
-data class Details(
+data class Movie(
     @SerializedName("adult")
     val adult: Boolean,
     @SerializedName("backdrop_path")
     val backdropPath: String,
     @SerializedName("id")
-    var id: Int?,
+    var id: Int,
     @SerializedName("original_language")
     val originalLanguage: String,
     @SerializedName("original_title")
@@ -34,7 +34,7 @@ data class Details(
     constructor(parcel: Parcel) : this(
         parcel.readValue(Boolean::class.java.classLoader) as Boolean,
         parcel.readString().toString(),
-        parcel.readValue(Int::class.java.classLoader) as? Int,
+        parcel.readValue(Int::class.java.classLoader) as Int,
         parcel.readString().toString(),
         parcel.readString().toString(),
         parcel.readString().toString(),
@@ -68,12 +68,12 @@ data class Details(
         return 0
     }
 
-    companion object CREATOR : Parcelable.Creator<Details> {
-        override fun createFromParcel(parcel: Parcel): Details {
-            return Details(parcel)
+    companion object CREATOR : Parcelable.Creator<Movie> {
+        override fun createFromParcel(parcel: Parcel): Movie {
+            return Movie(parcel)
         }
 
-        override fun newArray(size: Int): Array<Details?> {
+        override fun newArray(size: Int): Array<Movie?> {
             return arrayOfNulls(size)
         }
     }

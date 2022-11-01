@@ -2,12 +2,12 @@ package com.example.movieappsx.Data
 
 import com.google.gson.annotations.SerializedName
 
-data class Movies(
+data class PagesMeta(
     @SerializedName("page")
     val page: Int,
 
     @SerializedName("results")
-    val details: List<Details>,
+    val details: List<Movie>,
 
     @SerializedName("total_pages")
     val totalPages: Int,

@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.bumptech.glide.Glide
-import com.example.movieappsx.Data.Details
+import com.example.movieappsx.Data.Movie
 import com.example.movieappsx.databinding.ActivityMovieDetailsBinding
 
 class MovieDetailsActivity : AppCompatActivity() {
-    private lateinit var movie: Details
+    private lateinit var movie: Movie
     private lateinit var binding: ActivityMovieDetailsBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

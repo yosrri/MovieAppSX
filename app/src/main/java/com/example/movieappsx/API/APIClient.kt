@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 private const val BASE_URL = "https://api.themoviedb.org/3/movie/"
 
 object APIClient {
-    fun getClient(): MovieApi {
+    fun getRetrofit(): MovieApi {
         val interceptor = HttpLoggingInterceptor()
         interceptor.level = HttpLoggingInterceptor
             .Level
